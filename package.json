@@ -1,0 +1,35 @@
+{
+  "name": "midas-api",
+  "version": "1.0.0",
+  "description": "Api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "api",
+    "node",
+    "restful"
+  ],
+  "author": "Nicole",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-multiparty": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-mysql-session": "^2.1.0",
+    "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "mysql2": "^1.6.5",
+    "nodemailer": "^6.7.2",
+    "nodemailer-express-handlebars": "^4.0.0",
+    "path": "^0.12.7",
+    "sequelize": "^5.19.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}

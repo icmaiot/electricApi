@@ -1,0 +1,30 @@
+{
+    "development": {
+      "username": "admin",
+      "password": "icma",
+      "database": "midas",
+      "host": "3.17.43.30",
+      "dialect": "mysql",
+      "define": {
+        "timestamps": true
+      },
+      "timezone" : "-06:00"
+    },
+    "test": {
+      "username": "root",
+      "password": "password",
+      "database": "midas",
+      "host": "127.0.0.1",
+      "dialect": "mysql",
+      "define": {
+        "timestamps": true
+      }
+    },
+    "production": {
+      "use_env_variable": "DATABASE_URL",
+      "dialect": "mysql",
+      "define": {
+        "timestamps": true
+      }
+    }
+  }
