@@ -1,9 +1,9 @@
 {
     "development": {
       "username": "admin",
-      "password": "icma",
+      "password": "icma789",
       "database": "midas",
-      "host": "3.17.43.30",
+      "host": "54.241.14.55",
       "dialect": "mysql",
       "define": {
         "timestamps": true

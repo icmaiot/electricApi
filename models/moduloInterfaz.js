@@ -38,6 +38,4 @@ module.exports = (sequelize, DataTypes) => {
     };
     return ModuloInterfaz;
 
-    //ModuloInterfaz.hasOne(models.Maquina) idmodulo will be added on ModuloInbterfaz
-    //Relacion 1-1 con Maquina
 }

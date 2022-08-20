@@ -41,36 +41,8 @@ transporter.sendMail(mailOptions, function(err, data) {
   }
 });
 
-// app.post("/send-email", (req, res) => {
-//   var transporter = nodemailer.createTransport({
-//     host: "smtp.ethereal.email",
-//     port: 587,
-//     secure: false, // true for 465, false for other ports
-//     auth: {
-//       user: "russel.purdy91@ethereal.email",
-//       pass: "Pt5XkhdUQEKtpvmBxC",
-//     },
-//   });
-
-//   var mailOptions = {
-//     from: "'hola'  <russel.purdy91@ethereal.email>",
-//     to: "crowli555@hotmail.com",
-//     subject: "Paro",
-//     text: "Se ha realizado un paro en la Linea de Produccion",
-//   };
-
-//   transporter.sendMail(mailOptions, (error, info) => {
-//     if (error) {
-//       res.status(500).send(error.message);
-//     } else {
-//       console.log("Email enviado.");
-//       res.status(200).jsonp(req.body);
-//     }
-//   });
-// });
-
 app.listen(3000, () => {
-  console.log("servidor en -> http://localhost:3000")
+
 });
 
 

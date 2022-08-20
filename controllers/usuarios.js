@@ -392,9 +392,7 @@ module.exports = {
       },
 
     sendUsuarios: async function (req, res) {
-        console.log(req.body.topic)
-        console.log(req.body.message)
-        console.log(req)
+        //console.log(req.body.topic)
       },
       
     createUsuario: async function (req, res) {
