@@ -1,9 +1,9 @@
 {
     "development": {
-      "username": "admin",
-      "password": "icma789",
+      "username": "ioadminfarm",
+      "password": "34%22!ioadmin[",
       "database": "midas",
-      "host": "54.241.14.55",
+      "host": "iofarming.tech",
       "dialect": "mysql",
       "define": {
         "timestamps": true

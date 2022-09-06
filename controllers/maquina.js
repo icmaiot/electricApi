@@ -478,11 +478,10 @@ module.exports = {
 
   PGraficaLinea: async function (req, res) {
     try {
-    //  let idturno  = req.query.idturno == '' ? '-1' : req.query.idturno;
-     //  let fechaprep2 = req.query.fechaprep2 == '' ? '-1' : req.query.fechaprep2;
-     // let fechaprep3 = req.query.fechaprep3 == '' ? '-1' : req.query.fechaprep3;
-     // let fechaprep4 = req.query.fechaprep4 == '' ? '-1' : req.query.fechaprep4;
-      const response = await _sequelize.query('CALL P_TiempoYFechaXByTurno()');
+      let fechaprep = req.query.fechaprep == '' ? '0000-00-00' : req.query.fechaprep;
+      let fechaprep2 = req.query.fechaprep2 == '' ? '0000-00-00' : req.query.fechaprep2;
+      const response = await _sequelize.query('CALL P_TiempoYFechaXByTurno(:fechaprep,:fechaprep2);',
+      { replacements: {fechaprep: fechaprep, fechaprep2: fechaprep2 } });
       if (response) {
         res.status(200).send({ code: 200, response });
       } else {
