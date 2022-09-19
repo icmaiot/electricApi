@@ -18,6 +18,9 @@ router.route('/sendDescanso')
 router.route('/PGraficaLinea')
 .get(ensureAuth,maquina.PGraficaLinea);
 
+router.route('/PGraficaOEE')
+.get(ensureAuth,maquina.PGraficaOEE);
+
 router.route('/modin')
 .get(ensureAuth,maquina.getModuloInterfaz);
 

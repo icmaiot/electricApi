@@ -58,6 +58,13 @@ const produccionhistorico = require('./produccionhistorico')
 const evento_registro = require('./evento_registro')
 const evento_asignacion = require('./evento_asignacion')
 const lineaemail = require('./lineaemail')
+//09-07-2022
+const grafica_mats = require('./grafica_mats')
+const grafica_mntto = require('./grafica_mntto')
+const grafica_ing = require('./grafica_ing')
+const grafica_prod = require('./grafica_prod')
+const grafica_calidad = require('./grafica_calidad')
+
 
 //all of the routing will be done here
 
@@ -117,11 +124,17 @@ module.exports = function (app) {
     app.use('/asignarscrap', asignarscrap),
     app.use('/tiempomuertop', tiempomuertop),
     app.use('/produccionhistorico', produccionhistorico),
-    
+
     //evento_registro - 09/02/2022
     app.use('/evento_registro', evento_registro),
     app.use('/evento_asignacion', evento_asignacion),
     app.use('/lineaemail', lineaemail),
+    // grafica 22/06/2022
+    app.use('/grafica_mntto', grafica_mntto),
+    app.use('/grafica_mats', grafica_mats),
+    app.use('/grafica_ing', grafica_ing),
+    app.use('/grafica_prod', grafica_prod),
+    app.use('/grafica_calidad', grafica_calidad),
 
     app.use(router)
 }
