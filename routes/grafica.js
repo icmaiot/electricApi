@@ -15,6 +15,12 @@ router.route('/graficaAnillo')
 .get(ensureAuth,grafica.getGraficaAnillo);
 
 router.route('/graficaSobrepuesta')
-.get(ensureAuth,grafica.getGraficaSobrepuesta)
+.get(ensureAuth,grafica.getGraficaSobrepuesta);
+
+router.route('/PGraficaSkuProducido')
+.get(ensureAuth,grafica.PGraficaSkuProducido);
+
+router.route('/PGraficaEficiencia')
+.get(ensureAuth,grafica.PGraficaEficiencia);
 
 module.exports = router
