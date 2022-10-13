@@ -480,8 +480,9 @@ module.exports = {
     try {
       let fechaprep = req.query.fechaprep == '' ? '0000-00-00' : req.query.fechaprep;
       let fechaprep2 = req.query.fechaprep2 == '' ? '0000-00-00' : req.query.fechaprep2;
-      const response = await _sequelize.query('CALL P_TiempoYFechaXByTurno(:fechaprep,:fechaprep2);',
-      { replacements: {fechaprep: fechaprep, fechaprep2: fechaprep2 } });
+      let linea = req.query.linea == '' ? '-1' : req.query.linea;
+      const response = await _sequelize.query('CALL P_TiempoYFechaXByTurno(:fechaprep,:fechaprep2,:linea);',
+      { replacements: {fechaprep: fechaprep, fechaprep2: fechaprep2, linea:linea } });
       if (response) {
         res.status(200).send({ code: 200, response });
       } else {

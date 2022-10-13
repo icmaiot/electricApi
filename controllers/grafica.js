@@ -192,6 +192,28 @@ module.exports = {
     }
   },
 
+  PGraficaTiempomuertoPorDiayTurno: async function (req, res) {
+    try {
+      let fechaprep = req.query.fechaprep == '' ? '0000-00-00' : req.query.fechaprep;
+      let fechaprep2 = req.query.fechaprep2 == '' ? '0000-00-00' : req.query.fechaprep2;
+      let turno = req.query.turno == '' ? '-1' : req.query.turno;
+      const response = await sequelize.query('CALL P_GraficaTiempomuertoPorDiayTurno(:fechaprep,:fechaprep2,:turno);',
+      { replacements: {fechaprep: fechaprep, fechaprep2: fechaprep2, turno: turno } });
+      if (response) {
+        res.status(200).send({ code: 200, response });
+      }else{
+        throw new GraficaError(GRAFICA_ERROR.AREA_NOT_FOUND)
+      }
+    } catch (error) {
+      console.error(error)
+      if (error instanceof GraficaError) {
+        res.status(error.status).send(error)
+      } else {
+        res.status(500).send({ ...GRAFICA_ERROR.ERROR })
+      }
+    }
+  },
+
 
 }
 

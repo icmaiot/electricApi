@@ -23,4 +23,7 @@ router.route('/PGraficaSkuProducido')
 router.route('/PGraficaEficiencia')
 .get(ensureAuth,grafica.PGraficaEficiencia);
 
+router.route('/PGraficaTiempomuertoPorDiayTurno')
+.get(ensureAuth,grafica.PGraficaTiempomuertoPorDiayTurno);
+
 module.exports = router
