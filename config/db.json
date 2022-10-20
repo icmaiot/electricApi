@@ -1,9 +1,9 @@
 {
     "development": {
-      "username": "admin",
-      "password": "mexicanaags",
-      "database": "electric",
-      "host": "54.193.222.237",
+      "username": "ioadminfarm",
+      "password": "34%22!ioadmin[",
+      "database": "midas",
+      "host": "iofarming.tech",
       "dialect": "mysql",
       "define": {
         "timestamps": true
