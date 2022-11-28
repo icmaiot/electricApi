@@ -503,8 +503,9 @@ module.exports = {
       let fechaprep = req.query.fechaprep == '' ? '0000-00-00' : req.query.fechaprep;
       let fechaprep2 = req.query.fechaprep2 == '' ? '0000-00-00' : req.query.fechaprep2;
       let idskunow = req.query.idskunow == '' ? '-1' : req.query.idskunow;
-      const response = await _sequelize.query('CALL P_oeeYfechaYsku(:fechaprep,:fechaprep2,:idskunow);',
-      { replacements: {fechaprep: fechaprep, fechaprep2: fechaprep2, idskunow: idskunow } });
+      let idturno = req.query.idturno == '' ? '-1' : req.query.idturno;
+      const response = await _sequelize.query('CALL P_oeeYfechaYsku(:fechaprep,:fechaprep2,:idskunow,:idturno);',
+      { replacements: {fechaprep: fechaprep, fechaprep2: fechaprep2, idskunow: idskunow, idturno:idturno } });
       if (response) {
         res.status(200).send({ code: 200, response });
       } else {

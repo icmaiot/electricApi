@@ -174,9 +174,78 @@ module.exports = {
       let fechaprep = req.query.fechaprep == '' ? '0000-00-00' : req.query.fechaprep;
       let fechaprep2 = req.query.fechaprep2 == '' ? '0000-00-00' : req.query.fechaprep2;
       let idskunow = req.query.idskunow == '' ? '-1' : req.query.idskunow;
-      let linea = req.query.linea == '' ? '-1' : req.query.linea;
-      const response = await sequelize.query('CALL P_GraficaEficiencia(:fechaprep,:fechaprep2,:idskunow,:linea);',
-      { replacements: {fechaprep: fechaprep, fechaprep2: fechaprep2, idskunow: idskunow, linea: linea } });
+      let idturno = req.query.idturno == '' ? '-1' : req.query.idturno;
+      const response = await sequelize.query('CALL P_GraficaEficiencia(:fechaprep,:fechaprep2,:idskunow,:idturno);',
+      { replacements: {fechaprep: fechaprep, fechaprep2: fechaprep2, idskunow: idskunow, idturno: idturno } });
+      if (response) {
+        res.status(200).send({ code: 200, response });
+      }else{
+        throw new GraficaError(GRAFICA_ERROR.AREA_NOT_FOUND)
+      }
+    } catch (error) {
+      console.error(error)
+      if (error instanceof GraficaError) {
+        res.status(error.status).send(error)
+      } else {
+        res.status(500).send({ ...GRAFICA_ERROR.ERROR })
+      }
+    }
+  },
+
+  PGraficaDisponibilidad: async function (req, res) {
+    try {
+      let fechaprep = req.query.fechaprep == '' ? '0000-00-00' : req.query.fechaprep;
+      let fechaprep2 = req.query.fechaprep2 == '' ? '0000-00-00' : req.query.fechaprep2;
+      let idskunow = req.query.idskunow == '' ? '-1' : req.query.idskunow;
+      let idturno = req.query.idturno == '' ? '-1' : req.query.idturno;
+      const response = await sequelize.query('CALL P_GraficaDisponibilidad(:fechaprep,:fechaprep2,:idskunow,:idturno);',
+      { replacements: {fechaprep: fechaprep, fechaprep2: fechaprep2, idskunow: idskunow, idturno: idturno } });
+      if (response) {
+        res.status(200).send({ code: 200, response });
+      }else{
+        throw new GraficaError(GRAFICA_ERROR.AREA_NOT_FOUND)
+      }
+    } catch (error) {
+      console.error(error)
+      if (error instanceof GraficaError) {
+        res.status(error.status).send(error)
+      } else {
+        res.status(500).send({ ...GRAFICA_ERROR.ERROR })
+      }
+    }
+  },
+
+  PGraficaRendimiento: async function (req, res) {
+    try {
+      let fechaprep = req.query.fechaprep == '' ? '0000-00-00' : req.query.fechaprep;
+      let fechaprep2 = req.query.fechaprep2 == '' ? '0000-00-00' : req.query.fechaprep2;
+      let idskunow = req.query.idskunow == '' ? '-1' : req.query.idskunow;
+      let idturno = req.query.idturno == '' ? '-1' : req.query.idturno;
+      const response = await sequelize.query('CALL P_GraficaRendimiento(:fechaprep,:fechaprep2,:idskunow,:idturno);',
+      { replacements: {fechaprep: fechaprep, fechaprep2: fechaprep2, idskunow: idskunow, idturno: idturno } });
+      if (response) {
+        res.status(200).send({ code: 200, response });
+      }else{
+        throw new GraficaError(GRAFICA_ERROR.AREA_NOT_FOUND)
+      }
+    } catch (error) {
+      console.error(error)
+      if (error instanceof GraficaError) {
+        res.status(error.status).send(error)
+      } else {
+        res.status(500).send({ ...GRAFICA_ERROR.ERROR })
+      }
+    }
+  },
+
+  PGraficaPcalidad: async function (req, res) {
+    try {
+      let fechaprep = req.query.fechaprep == '' ? '0000-00-00' : req.query.fechaprep;
+      let fechaprep2 = req.query.fechaprep2 == '' ? '0000-00-00' : req.query.fechaprep2;
+      let idskunow = req.query.idskunow == '' ? '-1' : req.query.idskunow;
+      let idturno = req.query.idturno == '' ? '-1' : req.query.idturno;
+      const response = await sequelize.query('CALL P_GraficaPcalidad(:fechaprep,:fechaprep2,:idskunow,:idturno);',
+      { replacements: {fechaprep: fechaprep, fechaprep2: fechaprep2, idskunow: idskunow, idturno: idturno } });
       if (response) {
         res.status(200).send({ code: 200, response });
       }else{

@@ -23,6 +23,15 @@ router.route('/PGraficaSkuProducido')
 router.route('/PGraficaEficiencia')
 .get(ensureAuth,grafica.PGraficaEficiencia);
 
+router.route('/PGraficaDisponibilidad')
+.get(ensureAuth,grafica.PGraficaDisponibilidad);
+
+router.route('/PGraficaRendimiento')
+.get(ensureAuth,grafica.PGraficaRendimiento);
+
+router.route('/PGraficaPcalidad')
+.get(ensureAuth,grafica.PGraficaPcalidad);
+
 router.route('/PGraficaTiempomuertoPorDiayTurno')
 .get(ensureAuth,grafica.PGraficaTiempomuertoPorDiayTurno);
 
