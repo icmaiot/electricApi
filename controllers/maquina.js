@@ -504,7 +504,30 @@ module.exports = {
       let fechaprep2 = req.query.fechaprep2 == '' ? '0000-00-00' : req.query.fechaprep2;
       let idskunow = req.query.idskunow == '' ? '-1' : req.query.idskunow;
       let idturno = req.query.idturno == '' ? '-1' : req.query.idturno;
-      const response = await _sequelize.query('CALL P_oeeYfechaYsku(:fechaprep,:fechaprep2,:idskunow,:idturno);',
+      const response = await _sequelize.query('CALL P_GraficaOEE(:fechaprep,:fechaprep2,:idskunow,:idturno);',
+      { replacements: {fechaprep: fechaprep, fechaprep2: fechaprep2, idskunow: idskunow, idturno:idturno } });
+      if (response) {
+        res.status(200).send({ code: 200, response });
+      } else {
+        throw new MaquinaError(MAQUINA_ERROR.MAQUINA_NOT_FOUND)
+      }
+    } catch (error) {
+      console.error(error)
+      if (error instanceof MaquinaError) {
+        res.status(error.status).send(error)
+      } else {
+        res.status(500).send({ ...MAQUINA_ERROR.ERROR })
+      }
+    }
+  },
+
+  PGraficaOEEGLOBAL: async function (req, res) {
+    try {
+      let fechaprep = req.query.fechaprep == '' ? '0000-00-00' : req.query.fechaprep;
+      let fechaprep2 = req.query.fechaprep2 == '' ? '0000-00-00' : req.query.fechaprep2;
+      let idskunow = req.query.idskunow == '' ? '-1' : req.query.idskunow;
+      let idturno = req.query.idturno == '' ? '-1' : req.query.idturno;
+      const response = await _sequelize.query('CALL P_GraficaOEE_GLOBAL(:fechaprep,:fechaprep2,:idskunow,:idturno);',
       { replacements: {fechaprep: fechaprep, fechaprep2: fechaprep2, idskunow: idskunow, idturno:idturno } });
       if (response) {
         res.status(200).send({ code: 200, response });

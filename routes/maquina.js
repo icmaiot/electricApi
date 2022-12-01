@@ -21,6 +21,9 @@ router.route('/PGraficaLinea')
 router.route('/PGraficaOEE')
 .get(ensureAuth,maquina.PGraficaOEE);
 
+router.route('/PGraficaOEEGLOBAL')
+.get(ensureAuth,maquina.PGraficaOEEGLOBAL);
+
 router.route('/modin')
 .get(ensureAuth,maquina.getModuloInterfaz);
 
