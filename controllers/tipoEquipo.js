@@ -7,7 +7,7 @@ const sequelize = models.Sequelize;
 const TIPOEQUIPO_ERROR = {
     ERROR: {
         status: 500,
-        message: 'No se pudo guardar el tipo de equipo '
+        message: 'Error al guardar el tipo de equipo '
     },
     PASSWORD_FAIL: {
         status: 406,
@@ -21,7 +21,7 @@ const TIPOEQUIPO_ERROR = {
     },
     NOT_FOUND: {
         status: 404,
-        message: 'No se pudo encontrar el tipo de equipo',
+        message: 'Error al encontrar el tipo de equipo',
         code: 'TIPO_NOT_FOUND'
     },
     LIMIT: {

@@ -12,7 +12,7 @@ const _sequelize = models.sequelize;
 const MODULO_ERROR = {
     ERROR: {
         status: 500,
-        message: 'No se pudo guardar el módulo interfaz '
+        message: 'Error al guardar el módulo interfaz '
     },
     PASSWORD_FAIL: {
         status: 406,
@@ -26,7 +26,7 @@ const MODULO_ERROR = {
     },
     MODULO_NOT_FOUND: {
         status: 404,
-        message: 'No se pudo encontrar el módulo interfaz',
+        message: 'Error al encontrar el módulo interfaz',
         code: 'MODULO_NOT_FOUND'
     },
     LIMIT: {

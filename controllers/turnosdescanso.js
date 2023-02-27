@@ -9,7 +9,7 @@ let op = sequelize.Op;
 const TURNO_ERROR = {
     ERROR: {
         status: 500,
-        message: 'No se pudo guardar el dia de turno'
+        message: 'Error al guardar el dia de turno'
     },
     PASSWORD_FAIL: {
         status: 406,
@@ -23,7 +23,7 @@ const TURNO_ERROR = {
     },
     TURNO_NOT_FOUND: {
         status: 404,
-        message: 'No se pudo encontrar el dia de turno',
+        message: 'Error al encontrar el dia de turno',
         code: 'SENSOR_NOT_FOUND'
     },
     LIMIT: {

@@ -42,6 +42,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER(11),
             allowNull: true
         },
+        progprod: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         skuac: {
             type: DataTypes.STRING,
             allowNull: true

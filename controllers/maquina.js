@@ -143,7 +143,7 @@ module.exports = {
         }
       }
       const maquina = await Maquina.findAll({
-        attributes: ['idmaquina', 'maquina', 'percent_calidad', 'oee', 'oee_global', 'idarea', 'Descripcion', 'idmodulo', 'tipoequipo', 'idrmt'],
+        attributes: ['idmaquina', 'maquina', 'percent_calidad', 'oee', 'oee_global', 'idarea', 'Descripcion', 'idmodulo', 'tipoequipo', 'idrmt', 'progprod'],
         where: query,
       })
       if (maquina) {
@@ -476,13 +476,37 @@ module.exports = {
     }
   },
 
+  PTablaLinea: async function (req, res) {
+    try {
+      let fechaprep = req.query.fechaprep == '' ? '0000-00-00' : req.query.fechaprep;
+      let fechaprep2 = req.query.fechaprep2 == '' ? '0000-00-00' : req.query.fechaprep2;
+      let linea = req.query.linea == '' ? '-1' : req.query.linea;
+      let idproducto = req.query.idproducto == '' ? '-1' : req.query.idproducto;
+      const response = await _sequelize.query('CALL P_TablaTiempoMuertoCostos(:fechaprep,:fechaprep2,:linea,:idproducto);',
+      { replacements: {fechaprep: fechaprep, fechaprep2: fechaprep2, linea:linea, idproducto:idproducto } });
+      if (response) {
+        res.status(200).send({ code: 200, response });
+      } else {
+        throw new MaquinaError(MAQUINA_ERROR.MAQUINA_NOT_FOUND)
+      }
+    } catch (error) {
+      console.error(error)
+      if (error instanceof MaquinaError) {
+        res.status(error.status).send(error)
+      } else {
+        res.status(500).send({ ...MAQUINA_ERROR.ERROR })
+      }
+    }
+  },
+
   PGraficaLinea: async function (req, res) {
     try {
       let fechaprep = req.query.fechaprep == '' ? '0000-00-00' : req.query.fechaprep;
       let fechaprep2 = req.query.fechaprep2 == '' ? '0000-00-00' : req.query.fechaprep2;
       let linea = req.query.linea == '' ? '-1' : req.query.linea;
-      const response = await _sequelize.query('CALL P_TiempoYFechaXByTurno(:fechaprep,:fechaprep2,:linea);',
-      { replacements: {fechaprep: fechaprep, fechaprep2: fechaprep2, linea:linea } });
+      let idproducto = req.query.idproducto == '' ? '-1' : req.query.idproducto;
+      const response = await _sequelize.query('CALL P_TiempoYFechaXByTurno(:fechaprep,:fechaprep2,:linea,:idproducto);',
+      { replacements: {fechaprep: fechaprep, fechaprep2: fechaprep2, linea:linea, idproducto:idproducto  } });
       if (response) {
         res.status(200).send({ code: 200, response });
       } else {
@@ -551,7 +575,7 @@ module.exports = {
   createMaquina: async function (req, res) {
     try {
       let nombre_maquina = req.body.maquina;
-      let maquina = await Maquina.findOne({ attributes: ['idmaquina', 'maquina', 'idarea', 'Descripcion', 'idrmt', 'tipoequipo'], where: { maquina: nombre_maquina } });
+      let maquina = await Maquina.findOne({ attributes: ['idmaquina', 'maquina', 'idarea', 'Descripcion', 'idrmt', 'tipoequipo', 'progprod'], where: { maquina: nombre_maquina } });
       if (maquina) {
         throw new MaquinaError(MAQUINA_ERROR.DUPLICATE);
       }

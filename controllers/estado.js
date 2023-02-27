@@ -10,7 +10,7 @@ let op = sequelize.Op;
 const PERFIL_CONFIG_ERROR = {
     ERROR: {
         status: 500,
-        message: 'No se pudo guardar la relacion comercial '
+        message: 'Error al guardar la relacion comercial '
     },
     PASSWORD_FAIL: {
         status: 406,
@@ -24,7 +24,7 @@ const PERFIL_CONFIG_ERROR = {
     },
     PERFIL_NOT_FOUND: {
         status: 404,
-        message: 'No se pudo encontrar la relacion comercial',
+        message: 'Error al encontrar la relacion comercial',
         code: 'SENSOR_NOT_FOUND'
     },
     LIMIT: {
@@ -33,7 +33,7 @@ const PERFIL_CONFIG_ERROR = {
     },
     DUPLICATE: {
         status: 403,
-        message: 'Esta relación ya existe'
+        message: 'Esta relaciï¿½n ya existe'
     },
     CODE_INVALID: {
         status: 403,
@@ -45,7 +45,7 @@ const PERFIL_CONFIG_ERROR = {
     },
     PERFIL_REGISTERED: {
         status: 403,
-        message: 'La relación ya existe'
+        message: 'La relaciï¿½n ya existe'
     }
 }
 

@@ -10,7 +10,7 @@ let op = sequelize.Op;
 const PERFIL_CONFIG_ERROR = {
     ERROR: {
         status: 500,
-        message: 'No se pudo guardar'
+        message: 'Error al guardar'
     },
     PASSWORD_FAIL: {
         status: 406,
@@ -24,7 +24,7 @@ const PERFIL_CONFIG_ERROR = {
     },
     PERFIL_NOT_FOUND: {
         status: 404,
-        message: 'No se pudo encontrar el registro',
+        message: 'Error al encontrar el registro',
         code: 'SENSOR_NOT_FOUND'
     },
     LIMIT: {

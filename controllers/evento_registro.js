@@ -10,7 +10,7 @@ const op = sequelize.Op;
 const EVENTOCAUSA_ERROR = {
     ERROR: {
         status: 500,
-        message: 'No se pudo guardar el sensor '
+        message: 'Error al guardar el sensor '
     },
     AUTH_FAILED: {
         status: 401,
@@ -19,7 +19,7 @@ const EVENTOCAUSA_ERROR = {
     },
     EVENTO_NOT_FOUND: {
         status: 404,
-        message: 'No se pudo encontrar el sensor',
+        message: 'Error al encontrar el sensor',
         code: 'EVENTOCAUSA_NOT_FOUND'
     },
     LIMIT: {

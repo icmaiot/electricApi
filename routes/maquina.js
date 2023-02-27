@@ -15,6 +15,9 @@ router.route('/send-email')
 router.route('/sendDescanso')
 .post(ensureAuth,maquina.sendDescanso);
 
+router.route('/PTablaLinea')
+.get(ensureAuth,maquina.PTablaLinea);
+
 router.route('/PGraficaLinea')
 .get(ensureAuth,maquina.PGraficaLinea);
 

@@ -11,7 +11,7 @@ const _sequelize = models.sequelize;
 const CONST_ERROR = {
     ERROR: {
         status: 500,
-        message: 'No se pudo guardar el registro '
+        message: 'Error al guardar el registro '
     },
     PASSWORD_FAIL: {
         status: 406,
@@ -25,7 +25,7 @@ const CONST_ERROR = {
     },
     NOT_FOUND: {
         status: 404,
-        message: 'No se pudo encontrar el sensor',
+        message: 'Error al encontrar el sensor',
         code: 'SENSOR_NOT_FOUND'
     },
     LIMIT: {
