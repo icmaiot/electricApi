@@ -76,6 +76,29 @@ module.exports = {
         }
     },
 
+    getCausas: async function (req, res) {
+        try {
+            let idskunow = req.query.idskunow;
+            const response = await _sequelize.query('CALL P_GraficaOEE(:fechaprep,:fechaprep2,:idskunow);',
+            //const response = await _sequelize.query('CALL P_GraficaOEE(:fechaprep,:fechaprep2,:idskunow);',
+                { replacements: { fechaprep: fechaprep, fechaprep2: fechaprep2, idskunow: idskunow } });
+            if (response) {
+                res.status(200).send({ code: 200, response });
+            } else {
+                throw new TipoError(TIPOEQUIPO_ERROR.NOT_FOUND)
+            }
+
+        } catch (error) {
+            console.error(error)
+            if (error instanceof TipoError) {
+                res.status(error.status).send(error)
+            } else {
+                console.log(error);
+                res.status(500).send({ code: 500, message: 'Something Went Wrong' })
+            }
+        }
+    },
+
     createTipo: async function (req, res) {
         try {
             let tipo_equipo = await TipoEquipo.findOne({ attributes: ['idtipo', 'tipoequipo'], where: { tipoequipo: req.body.tipoequipo } })
@@ -114,8 +137,8 @@ module.exports = {
 
     update: async function (req, res) {
         try {
-            const resp = await TipoEquipo.update(req.body,{
-                where:{idtipo:req.params.id}
+            const resp = await TipoEquipo.update(req.body, {
+                where: { idtipo: req.params.id }
             })
             res.status(200).send({ code: 200, message: 'Tipo de equipo modificada', resp })
 
@@ -131,21 +154,21 @@ module.exports = {
     },
     readTipo: async function (req, res) {
         try {
-          let tipo = await TipoEquipo.findOne({ where: { idtipo: req.params.id } });
-          if (tipo) {
-            res.status(200).send({ code: 200, tipo });
-          } else {
-            throw new TipoError(TIPOEQUIPO_ERROR.NOT_FOUND)
-          }
+            let tipo = await TipoEquipo.findOne({ where: { idtipo: req.params.id } });
+            if (tipo) {
+                res.status(200).send({ code: 200, tipo });
+            } else {
+                throw new TipoError(TIPOEQUIPO_ERROR.NOT_FOUND)
+            }
         } catch (error) {
-          console.error(error)
-          if (error instanceof TipoError) {
-            res.status(error.status).send(error)
-          } else {
-            console.log(error);
-            res.status(500).send({ code: 500, message: 'Something Went Wrong' })
-          }
+            console.error(error)
+            if (error instanceof TipoError) {
+                res.status(error.status).send(error)
+            } else {
+                console.log(error);
+                res.status(500).send({ code: 500, message: 'Something Went Wrong' })
+            }
         }
-      }
+    }
 
 }
