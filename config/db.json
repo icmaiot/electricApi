@@ -3,7 +3,7 @@
       "username": "ioadminfarm",
       "password": "34%22!ioadmin[",
       "database": "midas",
-      "host": "localhost",
+      "host": "162.240.222.176",
       "dialect": "mysql",
       "define": {
         "timestamps": true
