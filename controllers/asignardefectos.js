@@ -97,8 +97,13 @@ module.exports = {
 
     create: async function (req, res) {
         try {
-            let response_new = new Asignardefectos(req.body);
-            const response = await response_new.save();
+            const idproducto = req.body.idproducto;
+            const iddefreg = req.body.iddefreg;
+            const promises = iddefreg.map(def => Asignardefectos.create({ idproducto, iddefreg: def }));
+            const response = await Promise.all(promises);
+            // console.log(req.body)
+            // let response_new = new Asignardefectos(req.body);
+            // const response = await response_new.save();
             res.status(200).send({ code: 200, status: response.status });
         } catch (error) {
             console.error(error)

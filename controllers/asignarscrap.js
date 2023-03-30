@@ -97,8 +97,12 @@ module.exports = {
 
     create: async function (req, res) {
         try {
-            let response_new = new Asignarscrap(req.body);
-            const response = await response_new.save();
+            const idproducto = req.body.idproducto;
+            const idscrapreg = req.body.idscrapreg;
+            const promises = idscrapreg.map(scra => Asignarscrap.create({ idproducto, idscrapreg: scra }));
+            const response = await Promise.all(promises);
+            // let response_new = new Asignarscrap(req.body);
+            // const response = await response_new.save();
             res.status(200).send({ code: 200, status: response.status });
         } catch (error) {
             console.error(error)

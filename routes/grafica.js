@@ -35,4 +35,10 @@ router.route('/PGraficaPcalidad')
 router.route('/PGraficaTiempomuertoPorDiayTurno')
 .get(ensureAuth,grafica.PGraficaTiempomuertoPorDiayTurno);
 
+router.route('/PTablaCostos1')
+.get(ensureAuth,grafica.PTablaCostos1);
+
+router.route('/PTablaCostos2')
+.get(ensureAuth,grafica.PTablaCostos2);
+
 module.exports = router

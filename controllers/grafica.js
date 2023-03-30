@@ -279,6 +279,50 @@ module.exports = {
     }
   },
 
+  PTablaCostos1: async function (req, res) {
+    try {
+      let fechab = req.query.fechaprep== '' ? '0000-00-00' : req.query.fechaprep;
+      let fechab2 = req.query.fechaprep2 == '' ? '0000-00-00' : req.query.fechaprep2;
+      let idskunow = req.query.idskunow == '' ? '-1' : req.query.idskunow;
+      const response = await sequelize.query('CALL P_TablaCostos1(:fechab,:fechab2,:idskunow);', 
+      { replacements: {fechab: fechab, fechab2: fechab2, idskunow: idskunow} });
+      if (response) {
+        res.status(200).send({ code: 200, response });
+      }else{
+        throw new GraficaError(GRAFICA_ERROR.AREA_NOT_FOUND)
+      }
+    } catch (error) {
+      console.error(error)
+      if (error instanceof GraficaError) {
+        res.status(error.status).send(error)
+      } else {
+        res.status(500).send({ ...GRAFICA_ERROR.ERROR })
+      }
+    }
+  },
+
+  PTablaCostos2: async function (req, res) {
+    try {
+      let fechab = req.query.fechaprep== '' ? '0000-00-00' : req.query.fechaprep;
+      let fechab2 = req.query.fechaprep2 == '' ? '0000-00-00' : req.query.fechaprep2;
+      let idskunow = req.query.idskunow == '' ? '-1' : req.query.idskunow;
+      const response = await sequelize.query('CALL P_TablaCostos2(:fechab,:fechab2);', 
+      { replacements: {fechab: fechab, fechab2: fechab2} });
+      if (response) {
+        res.status(200).send({ code: 200, response });
+      }else{
+        throw new GraficaError(GRAFICA_ERROR.AREA_NOT_FOUND)
+      }
+    } catch (error) {
+      console.error(error)
+      if (error instanceof GraficaError) {
+        res.status(error.status).send(error)
+      } else {
+        res.status(500).send({ ...GRAFICA_ERROR.ERROR })
+      }
+    }
+  },
+
 
 }
 
